@@ -90,10 +90,7 @@ img {
 /* Box Styles */
 .big-box {
     width: 100%;
-    height: 15em;
-    padding: 20px;
-    background-color: #DAEEF9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 .content-box {
     width: 100%; /* Adjust the width as needed */
