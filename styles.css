@@ -89,8 +89,8 @@ img {
 
 /* Box Styles */
 .big-box {
-    width: 100%;
-    background-color: rgba(218, 238, 249, 0.8));
+    width: 100vw;
+    background-color: rgba(218, 238, 249, 0.8);
 }
 .content-box {
     width: 100%; /* Adjust the width as needed */
