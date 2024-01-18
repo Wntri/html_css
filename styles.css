@@ -107,6 +107,23 @@ img {
 .content-box {
     width: 15%; /* Adjust the width as needed for smaller screens */
 }
+.article-head{
+    margin-top: 3rem;
+    text-align: center;
+    width: 100%;
+}
+.article{
+    width: 70%;
+    margin: 3rem auto;
+    padding: 1rem;
+    background-color: #ffffff;
+    background-color: rgba(218, 238, 249, 0.8);
+    border: 0.10rem solid rgb(102, 102, 102, 0.8);
+    border-radius: 0.5rem;
+    font-size: medium;
+    text-align: center; 
+
+}
 
 /* Footer Styles */
 footer {
