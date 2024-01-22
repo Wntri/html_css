@@ -1,7 +1,12 @@
 /* Common styles for all screen sizes */
+:root {
+    --main-bg-color: rgba(218, 238, 249, 0.8);
+    --main-font: 'Roboto', sans-serif;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: clamp(0.5em, 0.7em, 1em);
+    font-family: var(--main-font);
+    font-size: clamp(0.5rem, 0.7rem, 1rem);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -87,26 +92,42 @@ img {
 /* Box Styles */
 .big-box {
     width: 100vw;
-    background-color: rgba(218, 238, 249, 0.8);
+    height: 15vh;
+    background-color: var(--main-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .big-box img {
-    width: 65%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+img.SEO-header {
+    width: auto;
+    height: 15vh;
+}
+
+img.somemarkkinointi-header {
+    width: auto;
+    height: 13vh;
+}
+
+img.googleads-header {
+    width: auto;
+    height: 16vh;
 }
 
 .content-box {
-    width: 100%; /* Adjust the width as needed */
+    width: 15%; /* Adjust the width as needed */
     padding: 1.25rem;
-    background-color: #ffffff;
-    background-color: rgba(218, 238, 249, 0.8);
+    background-color: var(--main-bg-color);
     margin: 1.25rem 0;
-
 }
 
-.content-box {
-    width: 15%; /* Adjust the width as needed for smaller screens */
-}
+
 .article-head{
     margin-top: 3rem;
     text-align: center;
