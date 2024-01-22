@@ -117,7 +117,12 @@ img.somemarkkinointi-header {
 
 img.googleads-header {
     width: auto;
-    height: 16vh;
+    height: 20vh;
+}
+
+img.yhteydenotto-header {
+    width: auto;
+    height: 18vh;
 }
 
 .content-box {
