@@ -1,4 +1,3 @@
-// register.php
 <?php
 // Database connection, replace with your connection string
 $servername = 'localhost';
@@ -25,4 +24,9 @@ $sql = "INSERT INTO nordma (etunimi, sukunimi, email, salasana) VALUES (?, ?, ?,
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$etunimi, $sukunimi, $email, $hashed_password]);
 
+// Ohjaa käyttäjä login.php-sivulle
+header('Location: login.php');
+exit();
+
 echo 'Registration successful';
+?>

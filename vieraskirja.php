@@ -5,6 +5,8 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit;
+
+    $_SESSION['user_id'] = $kayttajan_id;
 }
 ?>
 
@@ -43,6 +45,9 @@ if (!isset($_SESSION['loggedin'])) {
     <meta property="og:url" content="https://nordma.fi">
     <meta property="og:image" content="">
     <meta property="og:description" content="Edullista digimarkkinointia Helsinki ja Uusimaa | Markkinointitoimisto Helsingissä pääkaupunkiseudulla | Mainostoimisto Helsingissä | Digimarkkinointi Uusimaa">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </head>
 <body>
     <!-- Header section containing navigation -->
@@ -69,55 +74,28 @@ if (!isset($_SESSION['loggedin'])) {
     <main>
         <!-- Big box section with content -->
         <div class="big-box">
-            <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
-        </div>
+    <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
+</div>
 
-        <!-- Login form -->
-        <form id="login-form">
-            <label for="login-email">Sähköposti:</label><br>
-            <input type="email" id="login-email" name="email" required><br>
-            <label for="login-password">Salasana:</label><br>
-            <input type="password" id="login-password" name="password" required><br>
-            <input type="submit" value="Login">
-            <input type="button" onclick="location.href='register.html';" value="Rekisteröidy" />
-        </form>
-        <!-- AJAX script -->
-    <script>
-        // Login form
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+<section class="content-box">
+    <!-- Lisää logout-nappi tähän -->
+    <form action="logout.php" method="post">
+        <input type="submit" value="Kirjaudu ulos">
+    </form>
 
-            var email = document.getElementById('login-email').value;
-            var password = document.getElementById('login-password').value;
+    <form id="guestbook-form">
+        <label for="title">Otsikko:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="message">Viesti:</label><br>
+        <textarea id="message" name="message" required></textarea><br>
+        <input type="submit" value="Lähetä"><br><br><br>
+    </form>
+    <div id="guestbook-entries">
+        <!-- Guestbook entries will be loaded here -->
+    </div>
+</section>
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'login.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (this.responseText === 'Invalid email or password') {
-                    // Display error message
-                    alert('Invalid email or password');
-                } else {
-                    // Handle successful login
-                }
-            };
-            xhr.send('email=' + email + '&password=' + password);
-        });
-    </script>
-        
-        <section class="content-box">
-            <form id="guestbook-form">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" required></textarea><br>
-                <input type="submit" value="Submit">
-            </form>
-            <div id="guestbook-entries">
-                <!-- Guestbook entries will be loaded here -->
-            </div>
-
-        </section>
+<script src="vieraskirja.js"></script>
 
     </main>
 

@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $salasana = $_POST['salasana'];
 
-    $sql = "SELECT * FROM nordma WHERE email = ?";
+    //$sql = "SELECT * FROM nordma WHERE email = ?";
+    $sql = "SELECT id, salasana FROM nordma WHERE email = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     $user = $stmt->fetch();
@@ -33,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user && password_verify($salasana, $user['salasana'])) {
         // Kirjautuminen onnistui
+        $_SESSION['user_id'] = $user['id']; // Tallennetaan käyttäjän id istuntoon
         $_SESSION['email'] = $email;
         $_SESSION['loggedin'] = true;
         echo 'Logged in';
