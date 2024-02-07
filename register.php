@@ -1,14 +1,19 @@
 // register.php
 <?php
 // Database connection, replace with your connection string
-$host = 'localhost';
-$db   = 'myDatabase';
-$user = 'myUser';
-$pass = 'myPassword';
-$charset = 'utf8mb4';
+$servername = 'localhost';
+$dbname   = 'test';
+$username = 'root';
+$password = '';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$pdo = new PDO($dsn, $user, $pass);
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // aseta PDO-errotila heitto-tilaan
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Yhteys onnistui" . "<br>";
+} catch(PDOException $e) {
+    echo "Yhteys epäonnistui: " . "<br>" . $e->getMessage();
+}
 
 $etunimi = $_POST['etunimi'];
 $sukunimi = $_POST['sukunimi'];
@@ -16,7 +21,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO users (etunimi, sukunimi, email, password) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO nordma (etunimi, sukunimi, email, salasana) VALUES (?, ?, ?, ?)";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$etunimi, $sukunimi, $email, $hashed_password]);
 

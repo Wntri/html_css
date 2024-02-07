@@ -55,30 +55,51 @@
         </nav>
     </header>
 
+    <!-- Main content of the page -->
     <main>
+        <!-- Big box section with content -->
         <div class="big-box">
-            <img class="googleads-header" src="img/GoogleAds.webp" alt="Google Ads" >
+            <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
         </div>
-        <section class="article-head">
-            <h2>Somemarkkinointi</h2>
-        </section>
-        
-        <section class="article">
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec adipiscing tristique risus nec. 
-                Nisi scelerisque eu ultrices vitae. 
-                Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Vel quam elementum pulvinar etiam non quam lacus suspendisse. Placerat orci nulla pellentesque dignissim enim. Mattis enim ut tellus elementum sagittis vitae et. Egestas dui id ornare arcu odio ut sem nulla pharetra. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. 
-                Nunc mattis enim ut tellus elementum sagittis vitae.
-            </p>
 
-            <p> Est ante in nibh mauris. Condimentum mattis pellentesque id nibh tortor id aliquet lectus. Phasellus egestas tellus rutrum tellus pellentesque.</p> 
-             
-            <p> Et tortor consequat id porta nibh venenatis cras sed felis. Nisl nisi scelerisque eu ultrices. Ultricies leo integer malesuada nunc vel risus commodo viverra. Faucibus et molestie ac feugiat sed. 
-                Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Cursus eget nunc scelerisque viverra. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Facilisi morbi tempus iaculis urna id volutpat lacus. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Viverra mauris in aliquam sem. 
-                Senectus et netus et malesuada fames ac turpis egestas integer. 
-                Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Varius morbi enim nunc faucibus a pellentesque. Curabitur gravida arcu ac tortor. Porttitor leo a diam sollicitudin tempor id eu nisl nunc.
-            </p>
-            
+        <!-- Registration form -->
+        <form id="registration-form">
+            <label for="register-etunimi">Etunimi:</label><br>
+            <input type="text" id="register-etunimi" name="etunimi" required><br>
+            <label for="register-sukunimi">Sukunimi:</label><br>
+            <input type="text" id="register-sukunimi" name="sukunimi" required><br>
+            <label for="register-email">Sähköposti:</label><br>
+            <input type="email" id="register-email" name="email" required><br>
+            <label for="register-password">Salasana:</label><br>
+            <input type="password" id="register-password" name="password" required><br>
+            <input type="submit" value="Register">
+        </form>
+
+            <!-- AJAX script -->
+    <script>
+        // Registration form
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var etunimi = document.getElementById('register-etunimi').value;
+            var sukunimi = document.getElementById('register-sukunimi').value;
+            var email = document.getElementById('register-email').value;
+            var password = document.getElementById('register-password').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'register.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (this.responseText === 'Registration successful') {
+                    // Display success message
+                    alert('Registration successful');
+                } else {
+                    // Handle registration error
+                }
+            };
+            xhr.send('etunimi=' + etunimi + '&sukunimi=' + sukunimi + '&email=' + email + '&password=' + password);
+        });
+    </script>
         </section>
 
     </main>
@@ -107,10 +128,10 @@
         <ul>
             <!-- Mobile navigation links -->
             <li><a href="index.html">Etusivu</a></li>
-                <li><a href="hakukoneoptimointi.html">Hakukoneoptimointi</a></li>
-                <li><a href="somemarkkinointi.html">Somemarkkinointi</a></li>
-                <li><a href="googlemarkkinointi.html">Google Ads</a></li>
-                <li><a href="yhteydenotto.html">Yhteydenotto</a></li>
+            <li><a href="hakukoneoptimointi.html">Hakukoneoptimointi</a></li>
+            <li><a href="somemarkkinointi.html">Somemarkkinointi</a></li>
+            <li><a href="googlemarkkinointi.html">Google Ads</a></li>
+            <li><a href="yhteydenotto.html">Yhteydenotto</a></li>
         </ul>
     </div>
 

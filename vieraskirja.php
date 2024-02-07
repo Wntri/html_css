@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Tarkista, onko käyttäjä kirjautunut
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -55,30 +65,58 @@
         </nav>
     </header>
 
+    <!-- Main content of the page -->
     <main>
+        <!-- Big box section with content -->
         <div class="big-box">
-            <img class="googleads-header" src="img/GoogleAds.webp" alt="Google Ads" >
+            <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
         </div>
-        <section class="article-head">
-            <h2>Somemarkkinointi</h2>
-        </section>
-        
-        <section class="article">
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec adipiscing tristique risus nec. 
-                Nisi scelerisque eu ultrices vitae. 
-                Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Vel quam elementum pulvinar etiam non quam lacus suspendisse. Placerat orci nulla pellentesque dignissim enim. Mattis enim ut tellus elementum sagittis vitae et. Egestas dui id ornare arcu odio ut sem nulla pharetra. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. 
-                Nunc mattis enim ut tellus elementum sagittis vitae.
-            </p>
 
-            <p> Est ante in nibh mauris. Condimentum mattis pellentesque id nibh tortor id aliquet lectus. Phasellus egestas tellus rutrum tellus pellentesque.</p> 
-             
-            <p> Et tortor consequat id porta nibh venenatis cras sed felis. Nisl nisi scelerisque eu ultrices. Ultricies leo integer malesuada nunc vel risus commodo viverra. Faucibus et molestie ac feugiat sed. 
-                Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Cursus eget nunc scelerisque viverra. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Facilisi morbi tempus iaculis urna id volutpat lacus. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Viverra mauris in aliquam sem. 
-                Senectus et netus et malesuada fames ac turpis egestas integer. 
-                Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Varius morbi enim nunc faucibus a pellentesque. Curabitur gravida arcu ac tortor. Porttitor leo a diam sollicitudin tempor id eu nisl nunc.
-            </p>
-            
+        <!-- Login form -->
+        <form id="login-form">
+            <label for="login-email">Sähköposti:</label><br>
+            <input type="email" id="login-email" name="email" required><br>
+            <label for="login-password">Salasana:</label><br>
+            <input type="password" id="login-password" name="password" required><br>
+            <input type="submit" value="Login">
+            <input type="button" onclick="location.href='register.html';" value="Rekisteröidy" />
+        </form>
+        <!-- AJAX script -->
+    <script>
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var email = document.getElementById('login-email').value;
+            var password = document.getElementById('login-password').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'login.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (this.responseText === 'Invalid email or password') {
+                    // Display error message
+                    alert('Invalid email or password');
+                } else {
+                    // Handle successful login
+                }
+            };
+            xhr.send('email=' + email + '&password=' + password);
+        });
+    </script>
+        
+        <section class="content-box">
+            <form id="guestbook-form">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" required></textarea><br>
+                <input type="submit" value="Submit">
+            </form>
+            <div id="guestbook-entries">
+                <!-- Guestbook entries will be loaded here -->
+            </div>
+
         </section>
 
     </main>
@@ -107,10 +145,10 @@
         <ul>
             <!-- Mobile navigation links -->
             <li><a href="index.html">Etusivu</a></li>
-                <li><a href="hakukoneoptimointi.html">Hakukoneoptimointi</a></li>
-                <li><a href="somemarkkinointi.html">Somemarkkinointi</a></li>
-                <li><a href="googlemarkkinointi.html">Google Ads</a></li>
-                <li><a href="yhteydenotto.html">Yhteydenotto</a></li>
+            <li><a href="hakukoneoptimointi.html">Hakukoneoptimointi</a></li>
+            <li><a href="somemarkkinointi.html">Somemarkkinointi</a></li>
+            <li><a href="googlemarkkinointi.html">Google Ads</a></li>
+            <li><a href="yhteydenotto.html">Yhteydenotto</a></li>
         </ul>
     </div>
 
