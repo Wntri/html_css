@@ -1,249 +1,319 @@
 /* Common styles for all screen sizes */
 :root {
-    --main-bg-color: rgba(218, 238, 249, 0.8);
-    --main-font: 'Roboto', sans-serif;
+  --main-bg-color: rgba(218, 238, 249, 0.8);
+  --main-font: "Roboto", sans-serif;
 }
 
 body {
-    font-family: var(--main-font);
-    font-size: clamp(0.5rem, 0.7rem, 1rem);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-image: url(img/background-lightblue.jpeg);
+  font-family: var(--main-font);
+  font-size: clamp(0.5rem, 0.7rem, 1rem);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url(img/background-lightblue.jpeg);
 }
 
 /* Header Styles */
 header {
-    background-color: rgba(218, 238, 249, 0.8);
-    text-align: center;
+  background-color: rgba(218, 238, 249, 0.8);
+  text-align: center;
 }
 
 /* Navigation Styles */
 nav {
-    position: sticky;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #92BFDD;
-    height: 3rem;
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #92bfdd;
+  height: 3rem;
 }
 
 .logo {
-    width: 10em; /* Adjust as needed */
-    height: auto;
-    margin-right: 25em;
+  width: 10em; /* Adjust as needed */
+  height: auto;
+  margin-right: 25em;
 }
 
 /* Body Scroll Styles */
 body.scrolled {
-    padding-top: 50rem;
+  padding-top: 50rem;
 }
 
 /* Navigation Links Styles */
 ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 li {
-    margin: 0 0.625rem;
+  margin: 0 0.625rem;
 }
 
 a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    transition: color 0.3s;
-    font-size: 0.9rem; /* Improved font size for better readability */
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 0.9rem; /* Improved font size for better readability */
 }
 
 a:hover {
-    color: #38598b;
+  color: #38598b;
 }
 
 a:active {
-    color: #ff0000;
+  color: #ff0000;
 }
 
 a.new-link {
-    color: #00ff00;
+  color: #00ff00;
 }
 
 /* Main Content Styles */
 main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 6.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 6.25rem;
 }
 
 /* Responsive Image Styles */
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
 }
 
 /* Box Styles */
 .big-box {
-    width: 100vw;
-    height: 15vh;
-    background-color: var(--main-bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 15vh;
+  background-color: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .big-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 img.SEO-header {
-    width: auto;
-    height: 15vh;
+  width: auto;
+  height: 15vh;
 }
 
 img.somemarkkinointi-header {
-    width: auto;
-    height: 13vh;
+  width: auto;
+  height: 13vh;
 }
 
 img.googleads-header {
-    width: auto;
-    height: 20vh;
+  width: auto;
+  height: 20vh;
 }
 
 img.yhteydenotto-header {
-    width: auto;
-    height: 18vh;
+  width: auto;
+  height: 18vh;
 }
 
 .content-box {
-    width: 15%; /* Adjust the width as needed */
-    padding: 1.25rem;
-    background-color: var(--main-bg-color);
-    margin: 1.25rem 0;
+  width: 15%; /* Adjust the width as needed */
+  padding: 1.25rem;
+  background-color: var(--main-bg-color);
+  margin: 1.25rem 0;
 }
 
-
-.article-head{
-    margin-top: 3rem;
-    text-align: center;
-    width: 100%;
+.article-head {
+  margin-top: 3rem;
+  text-align: center;
+  width: 100%;
 }
-.article{
-    width: 70%;
-    margin: 3rem auto;
-    padding: 1rem;
-    background-color: #ffffff;
-    background-color: rgba(218, 238, 249, 0.8);
-    border: 0.10rem solid rgb(102, 102, 102, 0.8);
-    border-radius: 0.5rem;
-    font-size: medium;
-    text-align: center; 
+.article {
+  width: 70%;
+  margin: 3rem auto;
+  padding: 1rem;
+  background-color: #ffffff;
+  background-color: rgba(218, 238, 249, 0.8);
+  border: 0.1rem solid rgb(102, 102, 102, 0.8);
+  border-radius: 0.5rem;
+  font-size: medium;
+  text-align: center;
+}
 
+/* Login form styles */
+
+.form-container {
+  max-width: 100%;
+  background: white;
+  padding: 70px;
+  margin: 30px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-submit,
+.form-button {
+  width: auto;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #92bfdd;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-submit:hover,
+.form-button:hover {
+  background-color: #7aa2c4;
+}
+
+.form-error {
+  color: red;
+  display: block;
+  margin-bottom: 15px;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #B5CFE5;
-    background-color: rgba(218, 238, 249, 0.8);
-    color: #000000;
-    padding: 0.5rem;
-    position: fixed;
-    bottom: 0;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #b5cfe5;
+  background-color: rgba(218, 238, 249, 0.8);
+  color: #000000;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer-box {
-    flex: 1;
-    padding: 0;
-    box-sizing: border-box;
+  flex: 1;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .footer-box.left,
 .footer-box.center,
 .footer-box.right {
-    text-align: center;
-    max-width: 100%;
+  text-align: center;
+  max-width: 100%;
 }
 
 .footer-box.left {
-    text-align: left;
+  text-align: left;
 }
 
 .footer-box.right {
-    text-align: right;
+  text-align: right;
 }
 
 .footer-box.right img {
-    display: inline-block;
-    width: 2.5rem; /* Adjust as needed */
-    height: auto;
-    padding: 0.rem;
+  display: inline-block;
+  width: 2.5rem; /* Adjust as needed */
+  height: auto;
+  padding: 0rem;
 }
 
 .menu-btn {
-    cursor: pointer;
-    display: none;
-    font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  font-size: 1rem;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  /* Suuremmat mobiililaitteet ja pienemmät tabletit */
+  .form-container {
+    padding: 30px;
   }
-  
-  .mobile-menu {
-    display: none;
+}
+
+@media (max-width: 768px) {
+  /* Tabletit */
+  .form-container {
+    padding: 20px;
   }
+}
 
 /* Additional adjustments for smaller screens */
 @media (max-width: 600px) {
-    .footer-box {
-        max-width: 100%;
-        margin-bottom: 0.625;
-        margin-right: 0.5rem;
-    }
+  .footer-box {
+    max-width: 100%;
+    margin-bottom: 0.625;
+    margin-right: 0.5rem;
+  }
 
-    /* Adjust font sizes for better readability on smaller screens */
-    a {
-        font-size: 0.7rem;
-    }
+  /* Adjust font sizes for better readability on smaller screens */
+  a {
+    font-size: 0.7rem;
+  }
 
-    header {
-        padding: 0.3125rem 0; /* Adjusted padding for better visibility */
-    }
+  header {
+    padding: 0.3125rem 0; /* Adjusted padding for better visibility */
+  }
 
-    /* Adjust the width for smaller screens in the content box */
-    .content-box {
-        width: 100%;
-    }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 3.5rem;
-        left: 0;
-        width: 100%;
-        background-color: rgba(218, 238, 249, 0.94);
-      }
-    
-      .nav-links.show {
-        display: flex;
-      }
-    
-      .nav-links li {
-        text-align: center;
-        padding: 0.5rem;
-      }
-    
-      .menu-btn {
-        display: block;
-      }
+  /* Adjust the width for smaller screens in the content box */
+  .content-box {
+    width: 100%;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    width: 100%;
+    background-color: rgba(218, 238, 249, 0.94);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .form-input {
+    width: 90%;
+  }
 }
