@@ -68,20 +68,18 @@ session_start();
         </div>
 
 <!-- Login form -->
-<form class="form-container" method="post" action="checklogin.php">
-    <h2>Kirjaudu sisään</h2>
-    <label class="form-label" for="email">Sähköposti:</label>
-    <input class="form-input" type="email" name="email" id="email" required>
-    <label class="form-label" for="password">Salasana:</label>
-    <input class="form-input" type="password" name="password" id="password" required>
-    <input class="form-submit" type="submit" value="Kirjaudu">
+<form id="loginForm" method="post" action="checklogin.php">
+    Sähköposti: <input type="email" name="email" id="email"><br>
+    Salasana: <input type="password" name="salasana" id="password"><br>
+    <input type="submit" value="Kirjaudu">
+
     <?php
         if(isset($_SESSION['error'])) {
             $error = $_SESSION['error'];
-            echo "<span class='form-error'>$error</span>";
+            echo "<span>$error</span>";
         }
     ?>
-    <input class="form-button" type="button" onclick="location.href='register.html';" value="Rekisteröidy" />
+            <input type="button" onclick="location.href='register.php';" value="Rekisteröidy" />
 </form>
 
 <div id="errorMessages"></div>
@@ -135,6 +133,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
                 <li><a href="somemarkkinointi.html">Somemarkkinointi</a></li>
                 <li><a href="googlemarkkinointi.html">Google Ads</a></li>
                 <li><a href="yhteydenotto.html">Yhteydenotto</a></li>
+                <li><a href="vieraskirja.php">Vieraskirja</a></li>
             </ul>
         </div>
     

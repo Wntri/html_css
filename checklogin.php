@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Salasana väärin
         $_SESSION['error'] = $error;
         header('Location: login.php');
-        //echo "<p style='color:red;'>Virheellinen käyttäjätunnus tai salasana</p>";
         exit();   
     }
 }
