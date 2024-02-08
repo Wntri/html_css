@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $salasana = $_POST['salasana'];
 
   //$sql = "SELECT * FROM nordma WHERE email = ?";
-  // Muuta SQL-kyselyäsi hakeaksesi myös isAdmin-arvon
   $sql = "SELECT id, salasana, isAdmin FROM nordma WHERE email = ?";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$email]);
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_id'] = $user['id']; // Tallennetaan käyttäjän id istuntoon
     $_SESSION['email'] = $email;
     $_SESSION['loggedin'] = true;
-    $_SESSION['isAdmin'] = $user['isAdmin'];
+    $_SESSION['isAdmin'] = $user['isAdmin']; // isAdmin = 1, jos käyttäjä on admin ja 0, jos ei ole
     echo 'Logged in';
     header('Location: vieraskirja.php');
     exit();
