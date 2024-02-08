@@ -80,10 +80,11 @@ session_start();
       <label class="form-label" for="register-password">Salasana:</label>
       <input class="form-input" type="password" id="register-password" name="password" required>
       <input class="form-submit" type="submit" value="Rekistöröidy">
+      <!-- Error messager -->
+      <div id="err"></div>
     </form>
 
-    <!-- Error message placeholder -->
-    <div id="err"></div>
+
 
     <!-- AJAX script -->
     <script>

@@ -153,7 +153,8 @@ img.yhteydenotto-header {
 /* Form styles */
 
 .form-container {
-  max-width: 100%;
+  width: 100%;
+  max-width: 350px;
   background: white;
   padding: 70px;
   margin: 30px auto;
