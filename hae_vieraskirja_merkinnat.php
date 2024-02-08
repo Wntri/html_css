@@ -29,7 +29,7 @@ $result = $conn->query($sql);
 // Tulosta merkinnät HTML-muodossa
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<div><strong>" . $row['title'] . "</strong><br>" . $row['message'] . "<br> Lähettäjän id: " . $row['sender_id'] . "<br> Lähettäjän etunimi: " . $row['sender_name'] . "</div>";
+        echo "<div><strong>" . $row['title'] . "</strong><br>" . $row['message'] . "<br><br> <i>Lähettäjän id</i>: " . $row['sender_id'] . "<br> <i>Lähettäjän etunimi</i>: " . $row['sender_name'] . "<br><br><hr></div>";
     }
 } else {
     echo "Ei merkintöjä.";
