@@ -83,6 +83,12 @@ if (!isset($_SESSION['loggedin'])) {
       <!-- Lisää logout-nappi tähän -->
       <form action="logout.php" method="post">
         <input class="form-submit" type="submit" value="Kirjaudu ulos">
+        <?php
+        if ($_SESSION['isAdmin'] == 1) {
+          echo '<input class="form-button" type="button" onclick="location.href=\'dashboard.php\';" value="Hallinoi viestejä" />';
+        }
+        ?>
+
       </form>
 
       <form class="guestbook-form" id="guestbook-form">
