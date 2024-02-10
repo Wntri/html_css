@@ -79,7 +79,6 @@ if ($_SESSION["isAdmin"] == 0) {
 
   <!-- Main content of the page -->
   <main>
-    <!-- Big box section with content -->
     <div class="big-box">
       <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
     </div>
@@ -87,10 +86,47 @@ if ($_SESSION["isAdmin"] == 0) {
     <section class="content-box">
       <h1>Dashboard</h1>
       <p>Tervetuloa hallintapaneeliin!</p>
-      <!-- TODO: Add table for all the entries and controls to update or remove them -->
-    </section>
+      
+      <table id="guestbook-table">
+        <thead>
+          <tr>
+            <th>Lähettäjä</th>
+            <th>Viesti</th>
+            <th>Toiminnot</th>
+          </tr>
+        </thead>
+        <tbody id="guestbook-entries">
+          <!-- Guestbook entries will be loaded here dynamically -->
+          <?php
+          // hae tietokannasta viestit ja lähettäjän tiedot.
+          $servername = 'localhost';
+          $dbname   = 'wp_trtkm23a_5';
+          $username = 'trtkm23a_5';
+          $password = 'Qbarekix';
 
-    <script src="vieraskirja.js"></script>
+          try {
+              $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+              $sql = "SELECT entries.*, nordma.etunimi AS sender_name FROM entries JOIN nordma ON entries.sender_id = nordma.id";
+              $stmt = $pdo->query($sql);
+
+              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo "<tr>";
+                  echo "<td>{$row['sender_name']}</td>";
+                  echo "<td>{$row['message']}</td>";
+                  echo "<td><a href='edit_message.php?id={$row['msgid']}'>Muokkaa</a></td>";
+                  echo "<td><a href='delete_message.php?id={$row['msgid']}'>Poista</a></td>";
+                  echo "</tr>";
+              }
+          } catch (PDOException $e) {
+              echo "Connection failed: " . $e->getMessage();
+          }
+          ?>
+        </tbody>
+      </table>
+
+    </section>
 
   </main>
 
