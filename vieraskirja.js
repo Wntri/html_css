@@ -1,35 +1,35 @@
-$(document).ready(function() {
-    $('#guestbook-form').submit(function(event) {
-        event.preventDefault(); // Estä lomakkeen oletustoiminto (sivun uudelleenlataus)
+$(document).ready(() => {
+  $("#guestbook-form").submit((event) => {
+    event.preventDefault(); // Estä lomakkeen oletustoiminto (sivun uudelleenlataus)
 
-        // Hanki lomakkeen tiedot
-        var formData = $(this).serialize();
+    // Hanki lomakkeen tiedot
+    const formData = $(event.currentTarget).serialize();
 
-        // Lähetä AJAX-pyyntö palvelimelle
-        $.ajax({
-            type: 'POST',
-            url: 'tallenna_vieraskirja.php', // Palvelinpään käsittelijän polku
-            data: formData,
-            success: function(response) {
-                // Tyhjennä lomake ja lataa uudelleen vieraskirjan merkinnät
-                $('#title').val('');
-                $('#message').val('');
-                loadGuestbookEntries();
-            }
-        });
+    // Lähetä AJAX-pyyntö palvelimelle
+    $.ajax({
+      type: "POST",
+      url: "tallenna_vieraskirja.php", // Palvelinpään käsittelijän polku
+      data: formData,
+      success: (response) => {
+        // Tyhjennä lomake ja lataa uudelleen vieraskirjan merkinnät
+        $("#title").val("");
+        $("#message").val("");
+        loadGuestbookEntries();
+      },
     });
+  });
 
-    // Lataa vieraskirjan merkinnät kun sivu ladataan
-    loadGuestbookEntries();
+  // Lataa vieraskirjan merkinnät kun sivu ladataan
+  loadGuestbookEntries();
 });
 
 function loadGuestbookEntries() {
-    // Lataa AJAX-pyynnöllä vieraskirjan merkinnät palvelimelta ja päivitä #guestbook-entries-div
-    $.ajax({
-        type: 'GET',
-        url: 'hae_vieraskirja_merkinnat.php', // Palvelinpään käsittelijän polku
-        success: function(response) {
-            $('#guestbook-entries').html(response);
-        }
-    });
+  // Lataa AJAX-pyynnöllä vieraskirjan merkinnät palvelimelta ja päivitä #guestbook-entries-div
+  $.ajax({
+    type: "GET",
+    url: "hae_vieraskirja_merkinnat.php", // Palvelinpään käsittelijän polku
+    success: (response) => {
+      $("#guestbook-entries").html(response);
+    },
+  });
 }
