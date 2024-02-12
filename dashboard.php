@@ -83,28 +83,29 @@ if ($_SESSION["isAdmin"] == 0) {
       <img src="img/nordma-header-1980x480-transparent.webp" alt="Nordma Header">
     </div>
 
-    <section class="content-box">
-      <h1>Dashboard</h1>
-      <p>Tervetuloa hallintapaneeliin!</p>
-      
-      <table id="guestbook-table">
-        <thead>
-          <tr>
-            <th>Lähettäjä</th>
-            <th>Viesti</th>
-            <th>Toiminnot</th>
-          </tr>
-        </thead>
-        <tbody id="guestbook-entries">
-          <!-- Guestbook entries will be loaded here dynamically -->
-          <?php
-          // hae tietokannasta viestit ja lähettäjän tiedot.
-          $servername = 'localhost';
-          $dbname   = 'wp_trtkm23a_5';
-          $username = 'trtkm23a_5';
-          $password = 'Qbarekix';
+    <section>
+      <div id="table-container">
+        <h1>Dashboard</h1>
+        <p>Tervetuloa hallintapaneeliin!</p>
 
-          try {
+        <table id="guestbook-table">
+          <thead>
+            <tr>
+              <th>Lähettäjä</th>
+              <th>Viesti</th>
+              <th>Toiminnot</th>
+            </tr>
+          </thead>
+          <tbody id="guestbook-entries">
+            <!-- Guestbook entries will be loaded here dynamically -->
+            <?php
+            // hae tietokannasta viestit ja lähettäjän tiedot.
+            $servername = 'localhost';
+            $dbname   = 'wp_trtkm23a_5';
+            $username = 'trtkm23a_5';
+            $password = 'Qbarekix';
+
+            try {
               $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -112,20 +113,20 @@ if ($_SESSION["isAdmin"] == 0) {
               $stmt = $pdo->query($sql);
 
               while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo "<tr>";
-                  echo "<td>{$row['sender_name']}</td>";
-                  echo "<td>{$row['message']}</td>";
-                  echo "<td><a href='edit_message.php?id={$row['msgid']}'>Muokkaa</a></td>";
-                  echo "<td><a href='delete_message.php?id={$row['msgid']}'>Poista</a></td>";
-                  echo "</tr>";
-              }
-          } catch (PDOException $e) {
-              echo "Connection failed: " . $e->getMessage();
-          }
-          ?>
-        </tbody>
-      </table>
+                echo "<tr>";
+                echo "<td>{$row['sender_name']}</td>";
+                echo "<td>{$row['message']}</td>";
+                echo "<td><a href='edit_message.php?id={$row['msgid']}'>Muokkaa</a> <a href='delete_message.php?id={$row['msgid']}'>Poista</a></td>";
 
+                echo "</tr>";
+              }
+            } catch (PDOException $e) {
+              echo "Connection failed: " . $e->getMessage();
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </section>
 
   </main>

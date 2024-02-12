@@ -202,7 +202,6 @@ img.yhteydenotto-header {
 }
 
 /* Guestbook form styles here */
-
 .guestbook-form {
   display: flex;
   flex-direction: column;
@@ -240,6 +239,47 @@ img.yhteydenotto-header {
 }
 
 .guestbook-form input[type="submit"]:hover {
+  background-color: #7aa2c4;
+}
+
+/* Edit message form styles */
+
+.edit-message-form {
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-message-form label {
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: block;
+}
+
+.edit-message-form input[type="text"],
+.edit-message-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-message-form input[type="submit"] {
+  background-color: #92bfdd;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-message-form input[type="submit"]:hover {
   background-color: #7aa2c4;
 }
 
@@ -295,6 +335,38 @@ footer {
   display: none;
 }
 
+/* Table Styles */
+#table-container {
+  overflow-x: auto;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+#guestbook-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#guestbook-table thead th {
+  background-color: #92bfdd;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+#guestbook-table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#guestbook-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
 @media (max-width: 992px) {
   /* Suuremmat mobiililaitteet ja pienemmät tabletit */
   .form-container {
@@ -306,6 +378,11 @@ footer {
   /* Tabletit */
   .form-container {
     padding: 20px;
+  }
+
+  .edit-message-form {
+    width: 90%; /* Allows more margin on small devices */
+    padding: 15px; /* Slightly less padding for more screen real estate */
   }
 }
 
@@ -359,5 +436,23 @@ footer {
 
   .form-input {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .edit-message-form {
+    padding: 10px;
+  }
+
+  .edit-message-form input,
+  textarea {
+    max-width: 80%;
+  }
+
+  .edit-message-form label,
+  .edit-message-form input[type="text"],
+  .edit-message-form textarea,
+  .edit-message-form input[type="submit"] {
+    font-size: 0.9rem;
   }
 }
