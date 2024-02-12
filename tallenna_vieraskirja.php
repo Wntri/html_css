@@ -3,8 +3,8 @@ session_start();
 
 // Tarkista, onko käyttäjä kirjautunut sisään
 if (!isset($_SESSION['user_id'])) {
-    echo "Käyttäjä ei ole kirjautunut sisään.";
-    exit();
+  echo "Käyttäjä ei ole kirjautunut sisään.";
+  exit();
 }
 
 // Otetaan käyttäjän id istunnosta
@@ -17,37 +17,53 @@ $username = 'root';
 $password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    exit();
+  $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+  exit();
 }
 
-// Hanki lomakkeen tiedot
-$title = $_POST['title'];
-$message = $_POST['message'];
+// Hanki lomakkeen tiedot ja suodata ne ennen tietokantaan tallentamista
+$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+$message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+
+// Validoi syötetyt tiedot
+$errors = [];
+if (empty($title)) {
+  $errors[] = 'Otsikko on pakollinen.';
+}
+if (empty($message)) {
+  $errors[] = 'Viesti on pakollinen.';
+}
+
+if (!empty($errors)) {
+  echo "Seuraavat virheet estivät lomakkeen lähettämisen:<br>";
+  foreach ($errors as $error) {
+    echo $error . "<br>";
+  }
+  exit();
+}
 
 try {
-    // Luo SQL-lause tallentamiseksi tietokantaan
-    $sql = "INSERT INTO entries (title, message, sender_id) VALUES (:title, :message, :user_id)";
-    
-    // Valmistele SQL-lause
-    $stmt = $pdo->prepare($sql);
-    
-    // Aseta parametrit
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':message', $message);
-    $stmt->bindParam(':user_id', $user_id);
-    
-    // Suorita SQL-lause
-    $stmt->execute();
+  // Luo SQL-lause tallentamiseksi tietokantaan
+  $sql = "INSERT INTO entries (title, message, sender_id) VALUES (:title, :message, :user_id)";
 
-    echo "Merkintä tallennettu onnistuneesti.";
-} catch(PDOException $e) {
-    echo "Virhe tallennettaessa merkintää: " . $e->getMessage();
+  // Valmistele SQL-lause
+  $stmt = $pdo->prepare($sql);
+
+  // Aseta parametrit
+  $stmt->bindParam(':title', $title);
+  $stmt->bindParam(':message', $message);
+  $stmt->bindParam(':user_id', $user_id);
+
+  // Suorita SQL-lause
+  $stmt->execute();
+
+  echo "Merkintä tallennettu onnistuneesti.";
+} catch (PDOException $e) {
+  echo "Virhe tallennettaessa merkintää: " . $e->getMessage();
 }
 
 // Sulje yhteys
 $pdo = null;
-?>
